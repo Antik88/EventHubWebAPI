@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "o1oB7TO08lwSARYBN9sElPVUBYbH4OnEN7oxSYfWdic=",
+  "Source": "EventHubWebApi",
+  "BasePath": "_content/EventHubWebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
