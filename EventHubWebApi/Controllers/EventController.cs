@@ -1,4 +1,5 @@
 ﻿using EventHubWebApi.Services.EventService;
+using EventHubWebApi.Services.ImageManagerService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +11,11 @@ namespace EventHubWebApi.Controllers
     [ApiController]
     public class EventController : ControllerBase
     {
+        private readonly IManageImagecs _iManageImage;
         private readonly IEventServicecs _eventServicecs;
-        public EventController(IEventServicecs eventServicecs)
+        public EventController(IManageImagecs manageImagecs, IEventServicecs eventServicecs)
         {
+            _iManageImage = manageImagecs;
             _eventServicecs = eventServicecs;
         }
 
@@ -77,6 +80,22 @@ namespace EventHubWebApi.Controllers
         public async Task<ActionResult<EventReview>> AddReview(int eventId, int userId, EventReview review)
         {
             return null;
+        }
+
+        [HttpPost]
+        [Route("uploadfile")]
+        public async Task<IActionResult> UploadFile(IFormFile _IFormFile, int eventId)
+        {
+            var result = await _iManageImage.UploadFile(_IFormFile, eventId);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("getFile")]
+        public async Task<IActionResult> DownloadFile(string FileName)
+        {
+            var result = await _iManageImage.DownloadFile(FileName);
+            return File(result.Item1, result.Item2, result.Item2);
         }
     }
 }

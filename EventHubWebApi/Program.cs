@@ -3,6 +3,8 @@ using EventHubWebApi.Data;
 using EventHubWebApi.Services.AuthService;
 using EventHubWebApi.Services.EventCategoryService;
 using EventHubWebApi.Services.EventService;
+using EventHubWebApi.Services.ImageManagerService;
+using EventHubWebApi.Services.ManageImageService;
 using EventHubWebApi.Services.UserService;
 using EventHubWebApi.Services.UserServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -52,6 +54,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddTransient<IManageImagecs, ManageImageService>();
 
 var app = builder.Build();
 

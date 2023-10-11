@@ -25,4 +25,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Uploads\StaticContent\" />
+  </ItemGroup>
+
 </Project>
